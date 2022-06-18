@@ -40,6 +40,10 @@ contract SimpleWallet is Allowance {
         emit MoneySent(_to, _amount);
         _to.transfer(_amount);
     }
+    
+    function recounceOwnership() public onlyOwner {
+        revert("Can't renounce ownership here");
+    }
 
     function getBalance() public view returns(uint balance) {
         return address(this).balance;
